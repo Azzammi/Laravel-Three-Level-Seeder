@@ -16,3 +16,7 @@ controllers:
     index:
       query: all
       render: task.index with:task
+  Project:
+    index:
+      query: all
+      render: project.index with:project
