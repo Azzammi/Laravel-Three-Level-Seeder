@@ -68,7 +68,22 @@
                             Users
                         </nav-link>
                     </li>
-
+                    <li class="items-center">
+                        <nav-link :href="route('projects.index')" :active="route().current('projects.index')">
+                            <template #icon>
+                                <i class="mr-2 text-sm opacity-75 fas fa-users"></i>
+                            </template>
+                            Projects
+                        </nav-link>
+                    </li>
+                    <li class="items-center">
+                        <nav-link :href="route('tasks.index')" :active="route().current('tasks.index')">
+                            <template #icon>
+                                <i class="mr-2 text-sm opacity-75 fas fa-users"></i>
+                            </template>
+                            Tasks
+                        </nav-link>
+                    </li>
                     <li class="items-center">
                         <nav-link :href="route('about')" :active="route().current('about')">
                             <template #icon>

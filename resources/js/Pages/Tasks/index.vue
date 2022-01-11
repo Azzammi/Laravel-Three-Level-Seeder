@@ -6,19 +6,11 @@
                     <div class="flex flex-wrap items-center">
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1">
                             <h3 class="font-semibold text-lg text-blueGray-700">
-                                Users
+                                Tasks
                             </h3>
                         </div>
                     </div>
                 </div>
-
-
-                <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-lightBlue-500">
-                    <span class="inline-block align-middle">
-                        Sample table page
-                    </span>
-                </div>
-
                 <div class="block w-full overflow-x-auto">
                     <table class="items-center w-full bg-transparent border-collapse">
                         <thead>
@@ -26,24 +18,12 @@
                             <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
                                 Name
                             </th>
-                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
-                                Email
-                            </th>
-                            <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-blueGray-50 text-blueGray-500 border-blueGray-100">
-                                Image
-                            </th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="user in users.data" :key="user.id">
+                        <tr v-for="task in tasks.data" :key="task.id">
                             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                {{ user.name }}
-                            </td>
-                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                {{ user.email }}
-                            </td>
-                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                <img v-bind:src="user.avatar"/>
+                                {{ task.name }}
                             </td>
                         </tr>
                         </tbody>
@@ -51,7 +31,7 @@
                 </div>
             </div>
 
-            <pagination :links="users.links"/>
+            <pagination :links="tasks.links"/>
 
         </div>
     </BreezeAuthenticatedLayout>
@@ -68,7 +48,7 @@ export default {
     },
 
     props: {
-        users: Object,
+        tasks: Object,
     }
 }
 </script>
