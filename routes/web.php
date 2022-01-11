@@ -36,6 +36,8 @@ Route::middleware('auth')->group(function () {
     })->name('about');
 
     Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+    Route::get('tasks', [\App\Http\Controllers\TaskController::class, 'index'])->name('tasks.index');
+    Route::get('projects', [\App\Http\Controllers\ProjectController::class, 'index'])->name('projects.index');
 
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
