@@ -1,0 +1,17 @@
+created:
+    - app/Http/Controllers/TaskController.php
+    - database/factories/TaskFactory.php
+    - database/factories/ProjectFactory.php
+    - database/migrations/2022_01_11_045638_create_tasks_table.php
+    - database/migrations/2022_01_11_045639_create_projects_table.php
+    - app/Models/Task.php
+    - app/Models/Project.php
+    - database/seeders/TaskSeeder.php
+    - database/seeders/ProjectSeeder.php
+    - tests/Feature/Http/Controllers/TaskControllerTest.php
+    - resources/views/task/index.blade.php
+updated:
+    - routes/web.php
+models:
+    Task: { name: 'string:200', relationships: { belongsTo: Project } }
+    Project: { name: 'string:200', relationships: { hasMany: Task, belongsTo: User } }

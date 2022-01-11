@@ -1,0 +1,18 @@
+models:
+  Task:
+    project_id: integer
+    name: string:200
+    relationships:
+      belongsTo: Project
+  Project:
+    user_id: integer
+    name: string:200
+    relationships:
+      hasMany: Task
+      belongsTo: User
+seeders: Task, Project
+controllers:
+  Task:
+    index:
+      query: all
+      render: task.index with:task
