@@ -10,7 +10,8 @@ class ProjectController extends Controller
 {
     public function index(Request $request)
     {
-        $projects = Project::paginate();
+        $projects = Project::withCount('tasks')->with('user')->paginate();
+
         return Inertia::render('Projects/index', [
             'projects' => $projects
         ]);
