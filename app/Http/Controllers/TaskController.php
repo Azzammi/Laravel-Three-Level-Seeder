@@ -10,7 +10,7 @@ class TaskController extends Controller
 {
     public function index(Request $request)
     {
-        $tasks = Task::paginate();
+        $tasks = Task::with('project')->paginate();
         return Inertia::render('Tasks/index', [
             'tasks' => $tasks
         ]);
