@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +16,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
 });
 
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('task', App\Http\Controllers\TaskController::class)->only('index');
-Route::resource('project', App\Http\Controllers\ProjectController::class)->only('index');
+require __DIR__.'/auth.php';
+
+Route::middleware('auth')->group(function () {
+    Route::get('about', function () {
+        return Inertia::render('About');
+    })->name('about');
+
+    Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+
+    Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
+    Route::put('profile', [\App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+});
